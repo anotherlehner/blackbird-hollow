@@ -2,6 +2,10 @@
 
 A dark fantasy roguelike for the web in the spirit of the classic game Heretic.
 
+## Play Online
+
+[Current build](dist/index.html)
+
 ## Building
 
 ```
