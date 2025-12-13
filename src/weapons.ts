@@ -1,10 +1,10 @@
 import * as rot from "rot-js";
 import { Weapon } from "./types";
 
-import impattack1 from 'url:../sounds/impat1.mp3';
-import wandhit from 'url:../sounds/gldhit.mp3';
-import staffhit from 'url:../sounds/stfhit.mp3';
-import gnthit from 'url:../sounds/gnthit.mp3';
+// import impattack1 from 'url:../sounds/impat1.mp3';
+// import wandhit from 'url:../sounds/gldhit.mp3';
+// import staffhit from 'url:../sounds/stfhit.mp3';
+// import gnthit from 'url:../sounds/gnthit.mp3';
 
 class GameWeapon {
     public range: number;
@@ -29,10 +29,10 @@ class GameWeapon {
     }
 }
 
-const NoneWeapon = new GameWeapon(1, 5, 12, impattack1, Weapon.NONE, 'claws');
-const StaffWeapon = new GameWeapon(1, 5, 20, staffhit, Weapon.STAFF, 'staff');
-const GauntletsWeapon = new GameWeapon(2, 15, 60, gnthit, Weapon.GAUNTLETS, 'gauntlets');
-const WandWeapon = new GameWeapon(10, 7, 14, wandhit, Weapon.ELVEN_WAND, 'elven wand');
+const NoneWeapon = new GameWeapon(1, 5, 12, null, Weapon.NONE, 'claws');
+const StaffWeapon = new GameWeapon(1, 5, 20, null, Weapon.STAFF, 'staff');
+const GauntletsWeapon = new GameWeapon(2, 15, 60, null, Weapon.GAUNTLETS, 'gauntlets');
+const WandWeapon = new GameWeapon(10, 7, 14, null, Weapon.ELVEN_WAND, 'elven wand');
 
 export function getWeapon(weapon: Weapon): GameWeapon {
     switch (weapon) {

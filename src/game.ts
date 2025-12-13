@@ -11,15 +11,15 @@ import { TileType } from "./world";
 import { Entity } from "./entity";
 
 // SOUND IMPORTS
-import ambient2 from 'url:../sounds/amb2.mp3';
-import ambient3 from 'url:../sounds/amb3.mp3';
-import ambient5 from 'url:../sounds/amb5.mp3';
-import wind from 'url:../sounds/wind.mp3';
-import itemup from 'url:../sounds/itemup.mp3';
-import playerDeath from 'url:../sounds/plrdth.mp3';
-import impdeath from 'url:../sounds/impdth.mp3';
-import doropn from 'url:../sounds/doropn.mp3';
-import gntact from 'url:../sounds/gntact.mp3';
+// import ambient2 from 'url:../sounds/amb2.mp3';
+// import ambient3 from 'url:../sounds/amb3.mp3';
+// import ambient5 from 'url:../sounds/amb5.mp3';
+// import wind from 'url:../sounds/wind.mp3';
+// import itemup from 'url:../sounds/itemup.mp3';
+// import playerDeath from 'url:../sounds/plrdth.mp3';
+// import impdeath from 'url:../sounds/impdth.mp3';
+// import doropn from 'url:../sounds/doropn.mp3';
+// import gntact from 'url:../sounds/gntact.mp3';
 
 
 function getPotentialPosition(xinitial: number, yinitial: number, keyCode: number): Position {
@@ -81,11 +81,11 @@ function doPlayerAttack(env: Env) {
     if (target) {
         let ammo = env.player.inventory.getAmmo(env.player.weapon);
         if (ammo != 0) {
-            sound(getWeapon(env.player.weapon).soundHit);
+            // sound(getWeapon(env.player.weapon).soundHit);
             let dmg = getWeapon(env.player.weapon).rollDamage();
             target.damage(dmg);
             if (target.health <= 0) {
-                sound(impdeath);
+                // sound(impdeath);
                 msgs.addMessage(target.name + " dies", env.messages);
             } else {
                 msgs.addMessage(`you inflict ${dmg} damage on ${target.name}`, env.messages);
@@ -124,13 +124,13 @@ function doPickupItem(env: Env, item: Entity): void {
         env.player.inventory.weapons.push(Weapon.GAUNTLETS);
         env.player.weapon = Weapon.GAUNTLETS;
         msgs.addMessage(`%c{${constants.COL_fg_armor}}picked up ${item.description()}`, env.messages);
-        sound(gntact);
+        // sound(gntact);
         env.world.removeEntity(item);
     }
 
     if (pickedUp) {
         env.world.removeEntity(item);
-        sound(itemup);
+        // sound(itemup);
     }
 }
 
@@ -143,13 +143,13 @@ function doPlayerMovement(env: Env, keyCode: number) {
         if (item) doPickupItem(env, item);
         if (rot.RNG.getUniform() < 0.004) {
             // TODO: make this only able to happen X turns after the last ambient sound
-            let soundobj = rot.RNG.getItem([ambient2, ambient3, ambient5, wind])
-            sound(soundobj);
+            // let soundobj = rot.RNG.getItem([ambient2, ambient3, ambient5, wind])
+            // sound(soundobj);
         }
     } else if (ptile.type == TileType.DOOR && !ptile.passable) {
         // door here is closed
         ptile.passable = true;
-        sound(doropn, 0.25);
+        // sound(doropn, 0.25);
     } else if (!env.world.isEntitiesPassableAt(ppos)) {
         let target = env.world.getCreatureEntityAt(ppos);
         if (!target.isPlayer()) {
@@ -195,7 +195,7 @@ function playerMove(env: Env, keyCode: number): boolean {
         if (env.player.inventory.weapons.indexOf(Weapon.GAUNTLETS) >= 0) {
             env.player.weapon = Weapon.GAUNTLETS;
             msgs.addMessage(`%c{${constants.COL_fg_weapon}}equipped Gauntlets of the Necromancer`, env.messages);
-            sound(gntact);
+            // sound(gntact);
         } else {
             msgs.addMessage("you don't have that weapon yet", env.messages);
         }
@@ -224,7 +224,7 @@ export function turn(env: Env, keyCode: number) {
         ecs.aiSystem(env);
         if (!env.player.isAlive()) {
             env.messages = [];
-            sound(playerDeath);
+            // sound(playerDeath);
             msgs.addMessage(`%c{red}You died after descending ${env.floorsDescended} floors.`, env.messages);
         }
     }

@@ -3,9 +3,10 @@ import { Component, Position } from "./types";
 import { Path } from "rot-js";
 import { addMessage } from "./msgs";
 import { Env } from "./env";
-import { sound } from "./sound";
-import impattack1 from 'url:../sounds/impat1.mp3';
 import { COL_fg_health } from "./constants";
+import { sound } from "./sound";
+
+// import impattack1 from 'url:../sounds/impat1.mp3';
 
 export function aiSystem(env: Env) {
     // for now, move toward the player and try to stay standing close
@@ -26,7 +27,7 @@ export function aiSystem(env: Env) {
             // attack player
             let dmg = rot.RNG.getUniformInt(5, 12);
             player.damage(dmg);
-            sound(impattack1);
+            // sound(impattack1);
             addMessage(`%c{${COL_fg_health}}${ent.name} scrapes you for ${dmg} damage!`, env.messages);
         } else if ((pathtoplayer.length > 2 && pathtoplayer.length < 6) || ent.angered) {
             // Dont chase the player until within a short distance
