@@ -3,10 +3,10 @@ import { KEYS } from "rot-js";
 // DIMENSIONS
 
 export const WIN_width = 80;
-export const WIN_height = 24;
+export const WIN_height = 34;
 
 export const MAP_width = WIN_width;
-export const MAP_height = 20;
+export const MAP_height = 30;
 
 // COLORS
 

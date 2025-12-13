@@ -59,8 +59,7 @@ window.onload = () => {
   let env = initEnv();
 
   // ATTACH TO BROWSER
-  document.body.innerHTML = "";
-  document.body.appendChild(env.display.getContainer());
+  document.getElementById('canvas-container').appendChild(env.display.getContainer());
 
   // KEYBOARD HANDLING
   document.addEventListener("keydown", e => game.turn(env, e.keyCode));

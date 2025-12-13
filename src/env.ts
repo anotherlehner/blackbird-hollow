@@ -162,7 +162,7 @@ export class Env {
 export function initEnv(): Env {
     let env = new Env();
     rot.RNG.setSeed(1234);
-    env.display = new rot.Display({ width: constants.WIN_width, height: constants.WIN_height, fontSize: 32 });
+    env.display = new rot.Display({ width: constants.WIN_width, height: constants.WIN_height, fontSize: 24 });
     env.initNewPlayer();
     env.initNewMap();
     return env;
